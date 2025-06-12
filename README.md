@@ -49,6 +49,7 @@ Three Major New Features in PaddleOCR 3.0:
 ## Prerequisites
 ### Environmental Preparation
 Create a separate environment for paddleocr
+- here in this project we use (python 3.11.5)
 ```bash
 python -m venv env/OCRenv
 ```
