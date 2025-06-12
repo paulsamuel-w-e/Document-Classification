@@ -1,5 +1,6 @@
 # Document-Classification
-⚙️ ## System Requirements
+-------------------------
+## System Requirements
 
 - Operating System: Windows 11 (tested)
 
