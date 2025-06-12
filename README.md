@@ -1,15 +1,17 @@
 # Document-Classification
-##⚙️ System Requirements
+⚙️ ## System Requirements
 
- OS: Windows 11 (tested)
+- Operating System: Windows 11 (tested)
 
- GPU: NVIDIA RTX 3050 (for GPU-accelerated tasks)
+- GPU: NVIDIA RTX 3050 (for GPU-accelerated OCR tasks)
 
- CUDA Toolkit: (e.g., CUDA 12.8)
+- CUDA Toolkit: CUDA 12.6 or 12.8 (verified with PaddleOCR)
 
- Python: 3.11.5
- Python and pip are 64bit
- processor architecture is x86_64(or called x64, Intel 64, AMD64)
+- Python: Version 3.11.5 (64-bit)
+
+- Processor Architecture: x86_64 / x64 / Intel 64 / AMD64
+
+- Python & pip: Must both be 64-bit
  
 ## use this code to download the dataset into your codespace
 ```
