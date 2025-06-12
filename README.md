@@ -117,6 +117,8 @@ Expected Output:
 ```bash
  python -m pip install paddlepaddle-gpu==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu126/
 ```
+For other systems or cpu version, refer to [PaddlePaddle official installation documentation](https://www.paddlepaddle.org.cn/install/quick).
+
 2. install `paddleocr`
 ```bash
 python -m pip install paddleocr
