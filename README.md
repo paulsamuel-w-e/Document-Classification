@@ -126,19 +126,19 @@ open powershell with admin previlege and copy paste this command into your shell
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
-Upgrade Chocolatey
+ Upgrade Chocolatey
 ```
 choco upgrade chocolatey
 ```
 
-Install ccache
+ Install ccache
 ```
 choco install ccache
 
 ```
-Check Installation
+ Check Installation
 ```
 where ccache
 ```
-If ccache isn't found after install, you may need to manually add chocolatey to your PATH
-you can find it in `C:\ProgramData\chocolatey\bin`
+ If ccache isn't found after install, you may need to manually add chocolatey to your PATH
+ you can find it in `C:\ProgramData\chocolatey\bin`
