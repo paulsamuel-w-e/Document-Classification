@@ -36,8 +36,8 @@ with zipfile.ZipFile(output, 'r') as zip_ref:
 # Remove the zip file after extraction
 os.remove(output)
 ```
-or download the dataset from [Google Drive}(https://drive.google.com/file/d/1Gu23xr357BPzGoocyPw6IPUhnz5mf52j/view?usp=sharing)
----
+or download the dataset from [Google Drive](https://drive.google.com/file/d/1Gu23xr357BPzGoocyPw6IPUhnz5mf52j/view?usp=sharing)
+----------------------------
 ## Optical Character Recognition
 This project utilizes PaddleOCF by Alibaba Cloud
 Three Major New Features in PaddleOCR 3.0:
