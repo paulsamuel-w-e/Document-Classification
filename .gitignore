@@ -1,0 +1,6 @@
+# Excluding Environment
+env/
+requirements/
+
+# Untracking Data
+Data/
