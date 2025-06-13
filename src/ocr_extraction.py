@@ -6,10 +6,15 @@ import argparse
 from tqdm import tqdm
 import paddle
 from paddleocr import PaddleOCR
-# import paddle.utils as paddle_utils
 
 
 def extract_ocr(image_dir, output_dir):
+    """
+        Extract OCR texts from images in the specified directory and save them in JSON format.
+        - param image_dir: Directory containing images organized in class folders.  
+        - param output_dir: Directory where the OCR results will be saved.
+        - return: None, saves JSON files with OCR results in the output directory under 'ocr_texts' subdirectory.
+    """
     ocr = PaddleOCR(
         text_detection_model_name="PP-OCRv5_server_det",
         text_recognition_model_name="PP-OCRv5_server_rec",
@@ -75,6 +80,6 @@ def extract_ocr(image_dir, output_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--image_dir", default="./data/raw_images", help="Input image directory")
-    parser.add_argument("--output_dir", default="./data/extracts", help="Output OCR directory")
+    parser.add_argument("--output_dir", default="./data/extracts", help="OCR Output directory")
     args = parser.parse_args()
     extract_ocr(args.image_dir, args.output_dir)
