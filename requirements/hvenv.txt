@@ -1,0 +1,5 @@
+colorama==0.4.6
+pathlib==1.0.1
+regex==2024.11.6
+simplejson==3.20.1
+tqdm==4.67.1
