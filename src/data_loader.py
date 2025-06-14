@@ -11,7 +11,7 @@ def get_datasets(file_path: str, val_size: float, test_size: float):
 
 def main():
     parser = argparse.ArgumentParser(description="Load and split Parquet dataset")
-    parser.add_argument("--file_path", type=str, required=True, help="Path to the Parquet file")
+    parser.add_argument("--file_path", type=str, default ="./Data/extracts/documents.parquet",required=True, help="Path to the Parquet file")
     parser.add_argument("--val_size", type=float, default=0.1)
     parser.add_argument("--test_size", type=float, default=0.1)
     parser.add_argument("--output_path", type=str, default="./Data/split", help="Path to save split datasets")
