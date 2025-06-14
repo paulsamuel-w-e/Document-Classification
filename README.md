@@ -54,6 +54,10 @@ Create a separate environment for paddleocr
 ```bash
 python -m venv env/OCRenv
 ```
+Activate environment:
+```
+env\OCRenv\Scripts\activate.bat
+```
 
 ### 1.1 How to Check Your Environment
 
