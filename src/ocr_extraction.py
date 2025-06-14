@@ -60,11 +60,11 @@ def extract_ocr(image_dir, output_dir):
 
             doc = {
                 "id" : base_name,
-                "text" : text_blocks,
+                "full_text" : text_blocks,
                 "bbox" : bboxes,
                 "confidence" : confidences,
                 "label" : class_folder,
-                "path_to_source" : img_path.replace("\\","/")
+                "image_path" : img_path.replace("\\","/")
             }
             
             # Save OCR texts

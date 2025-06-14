@@ -8,6 +8,9 @@ import simplejson
 import tqdm
 import argparse
 import os
+import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
 
 # Load the JSON file
 def load_text_data(file_path: Path):
@@ -28,6 +31,16 @@ def write_text_data(file_path: Path, data: list):
     with open(file_path, 'w', encoding='utf-8') as f:
         simplejson.dump(data, f, ensure_ascii=False, indent=4)
 
+# Clean bounding boxes to rect
+def polygon_to_rect(polygon):
+    xs = [point[0] for point in polygon]
+    ys = [point[1] for point in polygon]
+    return [min(xs), min(ys), max(xs), max(ys)]
+
+# Reorder keys in the dictionary to a desired order
+def reorder_keys(d):
+    desired_order = ["id", "label", "image_path", "full_text", "words", "bbox", "confidence"]
+    return {k: d[k] for k in desired_order if k in d}
 
 # Regex Pipeline
 def perform_regex(text_path: Path):
@@ -37,7 +50,7 @@ def perform_regex(text_path: Path):
     removed_indices = []
 
 
-    for idx, text in enumerate(doc['text']):
+    for idx, text in enumerate(doc['full_text']):
         text = re.sub(r'[^\x00-\x7F]+', '', text)
         text = re.sub(r'[^\w\s!"#$%&\'()*+,\-./:;<=>?@[\\\]^_`{|}~]', '', text)
         text = re.sub(r'(?<!\w)[!"#$%&\'()*+,\-./:;<=>?@[\\\]^_`{|}~](?!\w)', '', text)
@@ -52,14 +65,15 @@ def perform_regex(text_path: Path):
 
     cleaned_conf = remove_text_data(doc['confidence'], sorted_desc)
     cleaned_bbox = remove_text_data(doc['bbox'], sorted_desc)
-    cleaned_texts = remove_text_data(doc['text'], sorted_desc)
+    cleaned_texts = remove_text_data(doc['full_text'], sorted_desc)
 
 
-    doc['text'] = " ".join(cleaned_texts).strip()
-    doc['bbox'] = cleaned_bbox
+    doc['full_text'] = " ".join(cleaned_texts).strip()
+    doc['words'] = cleaned_texts
+    doc['bbox'] = [polygon_to_rect(poly) for poly in cleaned_bbox]
     doc['confidence'] = cleaned_conf
 
-    return doc
+    return reorder_keys(doc)
 
 
 # Main execution
@@ -81,11 +95,18 @@ if __name__ == "__main__":
                     print(f"skipping non-json file {file_path.parts[-1]}")
                     continue
                 text_path = file_path
-                tqdm.tqdm.write(f"Cleaning: {file_path.name}")
+                # tqdm.tqdm.write(f"Cleaning: {file_path.name}")
                 doc  = perform_regex(text_path)
                 dataset.append(doc)
 
         gc.collect()
 
     write_text_data(Path("./Data/extracts/cleaned_dataset.json"), dataset)
+
+    file = ".\Data\extracts\cleaned_dataset.json"
+    data = load_text_data(file)
+    df = pd.DataFrame(data)
+    table = pa.Table.from_pandas(df, preserve_index=False)
+    pq.write_table(table, ".\Data\extracts\documents.parquet")
+    print("Data cleaning and conversion to parquet completed successfully.")
     gc.collect()
