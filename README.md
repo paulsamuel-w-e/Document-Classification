@@ -1,5 +1,13 @@
 # Document-Classification
 -------------------------
+# Table of Contents
+
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+
+-------------------------
 ## System Requirements
 
 - Operating System: Windows 11 (tested)
