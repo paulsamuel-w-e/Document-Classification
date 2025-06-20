@@ -15,6 +15,7 @@ def extract_ocr(image_dir, output_dir):
         - param output_dir: Directory where the OCR results will be saved.
         - return: None, saves JSON files with OCR results in the output directory under 'ocr_texts' subdirectory.
     """
+    ocr = PaddleOCR(device="gpu")
     ocr = PaddleOCR(
         text_detection_model_name="PP-OCRv5_server_det",
         text_recognition_model_name="PP-OCRv5_server_rec",

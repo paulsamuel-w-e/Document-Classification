@@ -3,7 +3,7 @@ import paddle.utils as paddle_utils
 
 
 
-print(paddle.utils.run_check())
+paddle_utils.run_check()
 print("PaddlePaddle version:", paddle.__version__)
 print("CUDA available:", paddle.is_compiled_with_cuda())
 
