@@ -1,0 +1,31 @@
+{
+    "id": "Passbook_25",
+    "full_text": [
+        "Bank of teadi"
+    ],
+    "bbox": [
+        [
+            [
+                463,
+                145
+            ],
+            [
+                526,
+                145
+            ],
+            [
+                526,
+                166
+            ],
+            [
+                463,
+                166
+            ]
+        ]
+    ],
+    "confidence": [
+        0.8101835250854492
+    ],
+    "label": "Passbook",
+    "image_path": "./data/raw_images/Passbook/Passbook_25.jpg"
+}
